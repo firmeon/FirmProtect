@@ -3,3 +3,5 @@ main: fr.firmeon.firmprotect.FirmProtect
 version: 0.1
 description: A simple plugin that disable all damage for player
 authors: [firmeon]
+commands:
+  firmprotect:
