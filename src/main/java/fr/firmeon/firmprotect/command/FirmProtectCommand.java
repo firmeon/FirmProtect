@@ -14,13 +14,55 @@ public class FirmProtectCommand implements CommandExecutor {
             sender.sendMessage(FirmProtect.PREFIX + "§cType /firmprotect help for list of subcommand");
             return true;
         }
+
         switch (args[0]){
-            case "a":
-                sender.sendMessage(FirmProtect.PREFIX + "b");
+            case "help":
+                sendHelpMessage(sender);
                 return true;
+            case "vulnerable":
+                if(args.length < 2){
+                    sendWrongMessage(sender);
+                    return true;
+                }
+
+                String player = args[1];
+
+                if(FirmProtect.getINSTANCE().playerManager.isVulnerable(player)){
+                    sender.sendMessage(FirmProtect.PREFIX + "§cThis player is already vulnerable");
+                    return true;
+                }
+
+                FirmProtect.getINSTANCE().playerManager.setVulnerable(player);
+                sender.sendMessage(FirmProtect.PREFIX + "§2The player §6" + player + " §2is now vulnerabe");
+                return true;
+
+            case "unvulnerable":
+                if(args.length < 2){
+                    sendWrongMessage(sender);
+                    return true;
+                }
+
+                String playerName = args[1];
+
+                if(!FirmProtect.getINSTANCE().playerManager.isVulnerable(playerName)){
+                    sender.sendMessage(FirmProtect.PREFIX + "§cThis player is not vulnerable");
+                    return true;
+                }
+
+                FirmProtect.getINSTANCE().playerManager.unsetVulnerable(playerName);
+                sender.sendMessage(FirmProtect.PREFIX + "§2The player §6" + playerName + " §2is now unvulnerabe");
+                return true;
+
             default:
-                sender.sendMessage(FirmProtect.PREFIX + "Bonjour !");
+                sendWrongMessage(sender);
                 return true;
         }
+    }
+
+    private void sendHelpMessage(CommandSender sender) {
+    }
+
+    private void sendWrongMessage(CommandSender sender){
+        sender.sendMessage(FirmProtect.PREFIX + "§cType /firmprotect help for help");
     }
 }
