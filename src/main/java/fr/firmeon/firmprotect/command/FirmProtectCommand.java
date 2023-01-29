@@ -33,10 +33,10 @@ public class FirmProtectCommand implements CommandExecutor {
                 }
 
                 FirmProtect.getINSTANCE().playerManager.setVulnerable(player);
-                sender.sendMessage(FirmProtect.PREFIX + "§2The player §6" + player + " §2is now vulnerabe");
+                sender.sendMessage(FirmProtect.PREFIX + "§2The player §6" + player + " §2is now vulnerable");
                 return true;
 
-            case "unvulnerable":
+            case "invulnerable":
                 if(args.length < 2){
                     sendWrongMessage(sender);
                     return true;
@@ -50,7 +50,7 @@ public class FirmProtectCommand implements CommandExecutor {
                 }
 
                 FirmProtect.getINSTANCE().playerManager.unsetVulnerable(playerName);
-                sender.sendMessage(FirmProtect.PREFIX + "§2The player §6" + playerName + " §2is now unvulnerabe");
+                sender.sendMessage(FirmProtect.PREFIX + "§2The player §6" + playerName + " §2is now invulnerable");
                 return true;
 
             default:
