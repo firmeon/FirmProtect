@@ -11,6 +11,8 @@ public class FirmProtect extends JavaPlugin {
     public static final String PREFIX = "§7[§9FirmProtect§7] §r";
     public PlayerManager playerManager = new PlayerManager();
 
+    public int foodLevel = 19;
+
     @Override
     public void onEnable() {
         INSTANCE = this;
