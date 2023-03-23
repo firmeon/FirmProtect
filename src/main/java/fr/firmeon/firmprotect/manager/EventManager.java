@@ -8,6 +8,9 @@ import org.bukkit.plugin.PluginManager;
 
 public class EventManager {
 
+    /**
+     * Method for init all the events
+     */
     public static void registerEvent(){
         FirmProtect INSTANCE = FirmProtect.getINSTANCE();
         PluginManager pm = Bukkit.getPluginManager();

@@ -7,6 +7,9 @@ import org.bukkit.command.CommandSender;
 
 public class FirmProtectCommand implements CommandExecutor {
 
+    /**
+     * Method for the main command
+     */
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -59,9 +62,17 @@ public class FirmProtectCommand implements CommandExecutor {
         }
     }
 
+    /**
+     * Method to send the help message for the command
+     * @param sender The person (player or console) to send the help message
+     */
     private void sendHelpMessage(CommandSender sender) {
     }
 
+    /**
+     * Method to send a message that indicate that the command is invalid
+     * @param sender The person (player or console) to send the help message
+     */
     private void sendWrongMessage(CommandSender sender){
         sender.sendMessage(FirmProtect.PREFIX + "§cType /firmprotect help for help");
     }

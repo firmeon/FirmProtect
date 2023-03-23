@@ -5,6 +5,9 @@ import fr.firmeon.firmprotect.command.FirmProtectCommand;
 
 public class CommandManager {
 
+    /**
+     * Method for init all the command
+     */
     public static void registerCommand(){
         FirmProtect.getINSTANCE().getCommand("firmprotect").setExecutor(new FirmProtectCommand());
     }

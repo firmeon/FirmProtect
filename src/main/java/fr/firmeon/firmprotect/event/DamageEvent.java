@@ -9,6 +9,9 @@ import org.bukkit.event.entity.EntityRegainHealthEvent;
 
 public class DamageEvent implements Listener {
 
+    /**
+     * Method for the majority damage source
+     */
     @EventHandler
     public static void onDamage(EntityDamageEvent e){
         if(e.getEntity() instanceof Player){
@@ -16,6 +19,9 @@ public class DamageEvent implements Listener {
         }
     }
 
+    /**
+     * Method for specific damage source (such as mod damage source)
+     */
     @EventHandler
     public static void onHealthChange(EntityRegainHealthEvent e){
         if(e.getEntity() instanceof Player){
