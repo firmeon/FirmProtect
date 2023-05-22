@@ -1,0 +1,8 @@
+#FirmProtect config
+#Color are supported
+
+#Prefix that will be used to all the log and message (don't forget the space after the prefix)
+prefix: "&7[&9FirmProtect&7] &r"
+
+#How much food does the player have permanently (integer between 1 to 20)
+foodLevel: 19

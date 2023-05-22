@@ -8,14 +8,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class FirmProtect extends JavaPlugin {
 
     private static FirmProtect INSTANCE;
-    public static final String PREFIX = "§7[§9FirmProtect§7] §r";
+    public static String PREFIX;
     public PlayerManager playerManager = new PlayerManager();
-
-    public int foodLevel = 19;
 
     @Override
     public void onEnable() {
         INSTANCE = this;
+        PREFIX = this.getConfig().getString("prefix");
+
+
+        this.saveDefaultConfig();
         EventManager.registerEvent();
         CommandManager.registerCommand();
     }
