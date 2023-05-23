@@ -14,7 +14,7 @@ public class FirmProtect extends JavaPlugin {
     @Override
     public void onEnable() {
         INSTANCE = this;
-        PREFIX = this.getConfig().getString("prefix");
+        PREFIX = this.getConfig().getString("prefix").replace('&', '§');
 
 
         this.saveDefaultConfig();

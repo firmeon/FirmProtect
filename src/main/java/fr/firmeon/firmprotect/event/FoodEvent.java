@@ -12,10 +12,8 @@ public class FoodEvent implements Listener {
      */
     @EventHandler
     public static void foodEvent(FoodLevelChangeEvent e){
-        if(FirmProtect.getINSTANCE().playerManager.isVulnerable(e.getEntity().getName())){
+        if(!FirmProtect.getINSTANCE().playerManager.isVulnerable(e.getEntity().getName())){
             e.setFoodLevel(FirmProtect.getINSTANCE().getConfig().getInt("foodLevel"));
         }
-
-        //TODO : Food level custom
     }
 }
