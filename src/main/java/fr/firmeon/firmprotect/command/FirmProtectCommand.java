@@ -1,9 +1,14 @@
 package fr.firmeon.firmprotect.command;
 
 import fr.firmeon.firmprotect.FirmProtect;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class FirmProtectCommand implements CommandExecutor {
 
@@ -67,6 +72,30 @@ public class FirmProtectCommand implements CommandExecutor {
      * @param sender The person (player or console) to send the help message
      */
     private void sendHelpMessage(CommandSender sender) {
+        sender.sendMessage("        " + FirmProtect.PREFIX);
+
+        if(sender instanceof Player){
+            TextComponent vulnerableCommand = new TextComponent("§7- §bvulnerable §d[player] §7: §2 make the player vulnerable");
+            vulnerableCommand.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Click to execute the command").create()));
+            vulnerableCommand.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "firmprotect vulnerable "));
+            sender.spigot().sendMessage(vulnerableCommand);
+
+            TextComponent invulnerableCommand = new TextComponent("§7- §binvulnerable §d[player] §7: §2 make the player invulnerable");
+            invulnerableCommand.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Click to execute the command").create()));
+            invulnerableCommand.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "firmprotect invulnerable "));
+            sender.spigot().sendMessage(invulnerableCommand);
+
+            TextComponent helpCommand = new TextComponent("§7- §bhelp §7: §2show this page");
+            helpCommand.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7Click to execute the command").create()));
+            helpCommand.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "firmprotect help"));
+            sender.spigot().sendMessage(helpCommand);
+        } else {
+            sender.sendMessage("§7- §bvulnerable §d[player] §7: §2make the player vulnerable");
+            sender.sendMessage("§7- §binvulnerable §d[player] §7: §2make the player invulnerable");
+            sender.sendMessage("§7- §bhelp §7: §2show this page");
+        }
+
+
     }
 
     /**
