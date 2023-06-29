@@ -18,6 +18,11 @@ public class FirmProtectCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
+        if(!sender.hasPermission("firmprotect.command")){
+            sender.sendMessage(FirmProtect.PREFIX + "§cYou don't have permission to do that");
+            return true;
+        }
+
         if(args.length == 0){
             sender.sendMessage(FirmProtect.PREFIX + "§cType /firmprotect help for list of subcommand");
             return true;
