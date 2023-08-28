@@ -29,11 +29,10 @@ public class FirmProtectCommand implements CommandExecutor {
         }
 
         switch (args[0]) {
-            case "help" -> {
+            case "help":
                 sendHelpMessage(sender);
                 return true;
-            }
-            case "vulnerable" -> {
+            case "vulnerable":
                 if (args.length < 2) {
                     sendWrongMessage(sender);
                     return true;
@@ -46,8 +45,7 @@ public class FirmProtectCommand implements CommandExecutor {
                 FirmProtect.getINSTANCE().playerManager.setVulnerable(player);
                 sender.sendMessage(FirmProtect.PREFIX + "§2The player §6" + player + " §2is now vulnerable");
                 return true;
-            }
-            case "invulnerable" -> {
+            case "invulnerable":
                 if (args.length < 2) {
                     sendWrongMessage(sender);
                     return true;
@@ -60,11 +58,9 @@ public class FirmProtectCommand implements CommandExecutor {
                 FirmProtect.getINSTANCE().playerManager.unsetVulnerable(playerName);
                 sender.sendMessage(FirmProtect.PREFIX + "§2The player §6" + playerName + " §2is now invulnerable");
                 return true;
-            }
-            default -> {
+            default:
                 sendWrongMessage(sender);
                 return true;
-            }
         }
     }
 
