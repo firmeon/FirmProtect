@@ -28,47 +28,43 @@ public class FirmProtectCommand implements CommandExecutor {
             return true;
         }
 
-        switch (args[0]){
-            case "help":
+        switch (args[0]) {
+            case "help" -> {
                 sendHelpMessage(sender);
                 return true;
-            case "vulnerable":
-                if(args.length < 2){
+            }
+            case "vulnerable" -> {
+                if (args.length < 2) {
                     sendWrongMessage(sender);
                     return true;
                 }
-
                 String player = args[1];
-
-                if(FirmProtect.getINSTANCE().playerManager.isVulnerable(player)){
+                if (FirmProtect.getINSTANCE().playerManager.isVulnerable(player)) {
                     sender.sendMessage(FirmProtect.PREFIX + "§cThis player is already vulnerable");
                     return true;
                 }
-
                 FirmProtect.getINSTANCE().playerManager.setVulnerable(player);
                 sender.sendMessage(FirmProtect.PREFIX + "§2The player §6" + player + " §2is now vulnerable");
                 return true;
-
-            case "invulnerable":
-                if(args.length < 2){
+            }
+            case "invulnerable" -> {
+                if (args.length < 2) {
                     sendWrongMessage(sender);
                     return true;
                 }
-
                 String playerName = args[1];
-
-                if(!FirmProtect.getINSTANCE().playerManager.isVulnerable(playerName)){
+                if (!FirmProtect.getINSTANCE().playerManager.isVulnerable(playerName)) {
                     sender.sendMessage(FirmProtect.PREFIX + "§cThis player is not vulnerable");
                     return true;
                 }
-
                 FirmProtect.getINSTANCE().playerManager.unsetVulnerable(playerName);
                 sender.sendMessage(FirmProtect.PREFIX + "§2The player §6" + playerName + " §2is now invulnerable");
                 return true;
-
-            default:
+            }
+            default -> {
                 sendWrongMessage(sender);
                 return true;
+            }
         }
     }
 
@@ -108,6 +104,12 @@ public class FirmProtectCommand implements CommandExecutor {
      * @param sender The person (player or console) to send the help message
      */
     private void sendWrongMessage(CommandSender sender){
-        sender.sendMessage(FirmProtect.PREFIX + "§cType /firmprotect help for help");
+        if(sender instanceof Player){
+            TextComponent wrongMessage = new TextComponent(FirmProtect.PREFIX + "§cClick here for help");
+            wrongMessage.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§7/firmprotect help").create()));
+            wrongMessage.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/firmprotect help"));
+        } else {
+            sender.sendMessage(FirmProtect.PREFIX + "§cType /firmprotect help for help");
+        }
     }
 }
